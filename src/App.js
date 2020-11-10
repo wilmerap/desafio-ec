@@ -5,6 +5,11 @@ import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import logo from './logo.svg';
 import './App.css';
 
+// Paginas
+import Suscripcion from "./pages/Suscripcion";
+import Datos from "./pages/Datos";
+import Confirmacion from "./pages/Confirmacion";
+
 function App() {
   return (
     <div className="App">
