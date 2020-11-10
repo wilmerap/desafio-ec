@@ -11,12 +11,13 @@ import Datos from "./pages/Datos";
 import Confirmacion from "./pages/Confirmacion";
 
 function App() {
-  const { Content } = Layout;
+  const { Header, Content } = Layout;
 
   return (
       <Layout>
+        <Header className="App-header">Mag.</Header>
         <Router>
-          <Content>
+          <Content className="Content-info">
                 <Switch>
                   <Route path="/suscripcion" exact={true}>
                     <Suscripcion />
