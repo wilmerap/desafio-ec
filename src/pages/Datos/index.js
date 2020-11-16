@@ -5,11 +5,19 @@ export default function Datos(props) {
 
     const [form] = Form.useForm();
     const [valcvc, setValcvc] = useState();
+    const [nombre, setNombre] = useState();
+    const [TDD, setTDD] = useState();
+    const [fVenc, setFvenc] = useState();
+    const [CVV, setCVV] = useState();
     const [errorFecha, setErrorFecha] = useState("");
     const [errorTDC, setErrorTDC] = useState("");
     const [errorCVV, setErrorCVV] = useState("");
     // Validacion de FOrmulario
 
+    const onChangeNombre = (e) => {
+        const value = e.target.value;
+        setNombre(value);
+    }
 
     const onChangeNumberTDC = (e) => {
         setErrorTDC("");
@@ -20,6 +28,7 @@ export default function Datos(props) {
             setErrorTDC("error");
         } else {
             setErrorTDC("success");
+            setTDD(value);
         }
 
     }
@@ -32,6 +41,7 @@ export default function Datos(props) {
             setErrorFecha("error");
         } else {
             setErrorFecha("success");
+            setFvenc(value);
         }
 
       };
@@ -45,18 +55,27 @@ export default function Datos(props) {
             setErrorCVV("error");
         } else {
             setErrorCVV("success");
+            setCVV(value);
         }
 
         
       }
 
       const guardarCambios = (values) => {
-          console.log(values);
+          const valuesForm = {
+              NOMBRE: nombre,
+              TDD: TDD,
+              FVENC: fVenc,
+              CVV: CVV
+          };
+
+          console.log(valuesForm);
+          
       }
 
     return (
     <>
-    <Card bordered={false} style={{ width: 300 }}>
+    <Card bordered={false} style={{ width: 300, top: 20}}>
       <Form
         
         layout={"vertical"}
@@ -79,7 +98,8 @@ export default function Datos(props) {
             ]}
         >
         <Input
-          style={{ textTransform: "uppercase" }}
+            onChange={onChangeNombre}
+            style={{ textTransform: "uppercase" }}
         />
         </Form.Item>
         <Form.Item
