@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 export default function Suscripcion(props) {
 
     return (<>
-
+    <div><b>Plan de Suscripción</b></div>
     <Switch className="switch_sus" checkedChildren="Estándar" unCheckedChildren="Premium" defaultChecked={1} onChange={() => {alert('cambio')}} />
 
     <div className="site-card-border-less-wrapper">
