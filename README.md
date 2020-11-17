@@ -16,4 +16,6 @@ Otra pantalla de los detalles de la suscripcion que el cliente ha pagado.
 
 En la pagina del formulario he realizado las validaciones de los tipos de tarjeta de credito o debito, en este caso valido si es ua tarjeta VISA o MASTERCARD Valida, de lo contrario no acepto el envio de los datos, al igual que el formato de la fecha de vencimiento y el codigo de seguridad, y si todo esta correcto, almaceno en Redux los datos, como ejemplo funcional y envio. Nota: los datos solo los almaceno en Redux por Funcionalidad de almacenamiento de los datos de formulario. Tomando en cuenta que esos datos no se deberian almacenar. Solo es Ejemplos.
 
+## Despliege de la APP
 
+Aplicacion deplegada en https://determined-nightingale-f4929a.netlify.app/
