@@ -69,6 +69,34 @@
   font-weight: bold;
 }
 
+.nombre_plan_datos {
+  text-align: left;
+  font-weight: bold;
+}
+
+.costo_plan_datos {
+  color: #333333;
+  text-align: right;
+  font-weight: bold;
+}
+
+.cambio_plan_datos {
+  top: 15px;
+  text-align: center;
+}
+
+.link_cambio_plan_datos {
+  font-size: 11px;
+  color: black;
+  text-decoration: underline;
+}
+
+.link_cambio_plan_datos:hover {
+  font-size: 11px;
+  color: black;
+  text-decoration: underline;
+}
+
 .info-result {
   padding-top: 10px;
   max-width: 250px;

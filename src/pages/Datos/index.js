@@ -1,7 +1,10 @@
 import React, { useState } from 'react';
 import { Row, Col, Card, Form, Input, Button, Drawer } from 'antd';
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
+
+// Redux
+import { selectSuscripcionAction } from "../../actions/suscripcionActions";
 
 export default function Datos(props) {
 
@@ -15,6 +18,10 @@ export default function Datos(props) {
     const [errorFecha, setErrorFecha] = useState("");
     const [errorTDC, setErrorTDC] = useState("");
     const [errorCVV, setErrorCVV] = useState("");
+
+    // Inicializacion del dispach y ejecucion de las acciones.
+    const dispatch = useDispatch();
+    const Suscripcion = state => dispatch(selectSuscripcionAction(state));
 
     // Obtengo el valor de la suscripcion
     const plan = useSelector(
@@ -88,6 +95,14 @@ export default function Datos(props) {
           }
 
           
+      }
+
+      const cambiarPlan = (values) => {
+          if ( values === 2 ) {
+            Suscripcion({id: 1, name: "Premium", costo: 59.00});
+          } else {
+            Suscripcion({id: 2, name: "Estándard", costo: 29.00});
+          }
       }
 
     return (
@@ -182,6 +197,47 @@ export default function Datos(props) {
         <Button type="dashed" block onClick={guardarCambios}>Pagar S/ {plan.costo}</Button>
       </Form>
     </Card>
+
+
+
+
+    <Card bordered={false} style={{ width: 300, top: 20}}>
+    <Row>
+            <Col span={11} className="nombre_plan_datos">Plan {plan.name}
+            </Col>
+            <Col span={2}></Col>
+            <Col span={11} className="costo_plan_datos">S/{plan.costo} al mes
+            </Col>
+    </Row>    
+    <Row>
+            <Col span={24} className="cambio_plan_datos"><a className="link_cambio_plan_datos" onClick={() => cambiarPlan(plan.id)}>Cambiar a Plan {(plan.id === 1)?'Estándar':'Premium'}</a></Col>
+    </Row>
+    </Card>
+
+        <Drawer
+          title="Multi-level drawer"
+          width={520}
+          closable={false}
+          onClose={false}
+          visible={false}
+        >44{/*
+          <Button type="primary" onClick={this.showChildrenDrawer}>
+            Two-level drawer
+          </Button>
+          <Drawer
+            title="Two-level Drawer"
+            width={320}
+            closable={false}
+            onClose={this.onChildrenDrawerClose}
+            visible={this.state.childrenDrawer}
+          >
+            This is two-level drawer
+          </Drawer>*/}
+        </Drawer>
+
+
+
+
     </>);
     
 }

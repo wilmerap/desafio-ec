@@ -17,7 +17,7 @@ export default function  App() {
         <Header className="App-header">Mag.</Header>
         <Router>
           <Content className="Content-info">
-                {/*<Redirect from="/" to="/suscripcion" />*/}
+                <Redirect from="/" to="/suscripcion" />
                 <Switch>
                   <Route path="/suscripcion" exact={true}>
                    <Suscripcion />
