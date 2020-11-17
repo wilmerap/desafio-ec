@@ -13,7 +13,6 @@ export default function Datos(props) {
 
     const [form] = Form.useForm();
     const history = useHistory();
-    const [valcvc, setValcvc] = useState();
     const [nombre, setNombre] = useState();
     const [TDD, setTDD] = useState();
     const [fVenc, setFvenc] = useState();
@@ -96,7 +95,7 @@ export default function Datos(props) {
           if( nombre && TDD && fVenc && CVV) {
             console.log(valuesForm);
             DatosPago(valuesForm);
-            //history.push("/confirmacion");
+            history.push("/confirmacion");
           }
 
           
@@ -120,7 +119,7 @@ export default function Datos(props) {
         form={form}
         className="ant-advanced-search-form"
         initialValues={{
-            cvc: valcvc,
+            cvc: CVV,
           }}
         scrollToFirstError
       >
@@ -203,10 +202,6 @@ export default function Datos(props) {
         <Button type="dashed" block onClick={guardarCambios}>Pagar S/ {plan.costo}</Button>
       </Form>
     </Card>
-
-
-
-
     <Card bordered={false} style={{ width: 300, top: 20}}>
     <Row>
             <Col span={11} className="nombre_plan_datos">Plan {plan.name}
@@ -219,31 +214,6 @@ export default function Datos(props) {
             <Col span={24} className="cambio_plan_datos"><a className="link_cambio_plan_datos" onClick={() => cambiarPlan(plan.id)}>Cambiar a Plan {(plan.id === 1)?'Estándar':'Premium'}</a></Col>
     </Row>
     </Card>
-
-        <Drawer
-          title="Multi-level drawer"
-          width={520}
-          closable={false}
-          onClose={false}
-          visible={false}
-        >44{/*
-          <Button type="primary" onClick={this.showChildrenDrawer}>
-            Two-level drawer
-          </Button>
-          <Drawer
-            title="Two-level Drawer"
-            width={320}
-            closable={false}
-            onClose={this.onChildrenDrawerClose}
-            visible={this.state.childrenDrawer}
-          >
-            This is two-level drawer
-          </Drawer>*/}
-        </Drawer>
-
-
-
-
     </>);
     
 }

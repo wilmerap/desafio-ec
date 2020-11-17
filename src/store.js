@@ -1,11 +1,8 @@
 import { createStore } from "redux";
 import reducer from "./reducers";
-import {
-  getStateLocalStoraga,
-  setStateLocalStorage
-} from "./utils/localStorage";
+import { saveToLocalStorage, loadFromLocalStorage } from "./utils/localStorage";
 
-const localStorageState = getStateLocalStoraga();
+const localStorageState = loadFromLocalStorage();
 
 const store = createStore(
   reducer,
@@ -13,10 +10,6 @@ const store = createStore(
   window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
 );
 
-store.subscribe(() => {
-  setStateLocalStorage({
-    suscripcion: store.getState().suscripcion
-  });
-});
+store.subscribe(() => saveToLocalStorage(store.getState()));
 
 export default store;

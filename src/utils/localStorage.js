@@ -1,9 +1,19 @@
-export const getStateLocalStoraga = () => {
-    const suscripcionStorage = localStorage.getItem("suscripcion");
-    if (suscripcionStorage === null) return undefined;
-    return JSON.parse(suscripcionStorage);
+  export const saveToLocalStorage = (state) => {
+    try {
+      const serializedState = JSON.stringify(state);
+      localStorage.setItem("state", serializedState);
+    } catch (e) {
+      console.log(e);
+    }
   };
   
-  export const setStateLocalStorage = state => {
-    localStorage.setItem("suscripcion", JSON.stringify(state));
+  export const loadFromLocalStorage = () => {
+    try {
+      const serializedState = localStorage.getItem("state");
+      if (serializedState === null) return undefined;
+      return JSON.parse(serializedState);
+    } catch (e) {
+      console.log(e);
+      return undefined;
+    }
   };

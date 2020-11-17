@@ -1,4 +1,4 @@
-import React, { useState, Suspense } from "react";
+import React, { useEffect, useState, Suspense } from "react";
 import { Button, Switch, Card, Divider } from 'antd';
 import { Link } from "react-router-dom";
 
@@ -10,6 +10,10 @@ import { TitlePage } from "../../TitlePage";
 import { selectSuscripcionAction } from "../../actions/suscripcionActions";
 
 export default function Suscripcion() {
+
+    useEffect(() => {
+      Suscripcion({id: 2, name: "Estándard", costo: 29.00});
+    }, []);
 
     // Inicializacion del dispach y ejecucion de las acciones.
     const dispatch = useDispatch();
@@ -27,9 +31,9 @@ export default function Suscripcion() {
 
     // Obtengo el valor de la suscripcion
     const plan = useSelector(
-      state => state.suscripcion.suscripcion
+      (state) => state.suscripcion.suscripcion
     );
-
+    
     return (<>
     <TitlePage title="Seleccionar Suscripción" />
     <div><b>Plan de Suscripción</b></div>

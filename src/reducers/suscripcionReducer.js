@@ -1,11 +1,12 @@
 const initialProps = {
-    suscripcion: [{name: "Estándard", costo: 29.00}]
+    suscripcion: []
   };
   
   export default function(state = initialProps, action) {
     switch (action.type) {
       case "SELECT_SUSCRIPCION":
         return {
+          ...state,
           suscripcion:  action.payload
         };
       default:
