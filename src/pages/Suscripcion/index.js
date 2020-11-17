@@ -13,37 +13,36 @@ export default function Suscripcion() {
     const dispatch = useDispatch();
     const Suscripcion = state => dispatch(selectSuscripcionAction(state));
 
-
     const selectPlan = (checked) => {
       
       if ( !checked ) {
-        Suscripcion({name: "Premium", costo: 59.00});
+        Suscripcion({id: 1, name: "Premium", costo: 59.00});
       } else {
-        Suscripcion({name: "Estándard", costo: 29.00});
+        Suscripcion({id: 2, name: "Estándard", costo: 29.00});
       }
 
     }
 
     // Obtengo el valor de la suscripcion
-    const costo = useSelector(
-      state => state.suscripcion.suscripcion.costo
+    const plan = useSelector(
+      state => state.suscripcion.suscripcion
     );
 
     return (<>
     <div><b>Plan de Suscripción</b></div>
-    <Switch className="switch_sus" checkedChildren="Estándar" unCheckedChildren="Premium" defaultChecked={1} onChange={selectPlan} />
+    <Switch className="switch_sus" checkedChildren="Estándar" unCheckedChildren="Premium" defaultChecked={(plan.costo == 29)?1:0} onChange={selectPlan} />
 
     <div className="site-card-border-less-wrapper">
     <Card bordered={false} style={{ width: 300 }}>
-    <div className="costo-total"><span className="costo-s">S/</span> <span className="costo-sus">{costo}</span> / AL MES</div>
+    <div className="costo-total"><span className="costo-s">S/</span> <span className="costo-sus">{plan.costo}</span> / AL MES</div>
         <p className="text-sus">Loren ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod</p>
     <Divider dashed />
       <ul className="lista-opciones">
 
         <li> Loren ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod</li>
         <li> Loren ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod</li>
-        <li> Loren ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod</li>
-        <li> Loren ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod</li>
+        <li className={(plan.id == 2)?'sus_29':''}> Loren ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod</li>
+        <li className={(plan.id == 2)?'sus_29':''}> Loren ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod</li>
 
       </ul>
     </Card>

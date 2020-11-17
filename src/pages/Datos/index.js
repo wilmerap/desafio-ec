@@ -1,9 +1,12 @@
 import React, { useState } from 'react';
 import { Row, Col, Card, Form, Input, Button, Drawer } from 'antd';
+import { useSelector } from "react-redux";
+import { useHistory } from "react-router-dom";
 
 export default function Datos(props) {
 
     const [form] = Form.useForm();
+    const history = useHistory();
     const [valcvc, setValcvc] = useState();
     const [nombre, setNombre] = useState();
     const [TDD, setTDD] = useState();
@@ -12,6 +15,12 @@ export default function Datos(props) {
     const [errorFecha, setErrorFecha] = useState("");
     const [errorTDC, setErrorTDC] = useState("");
     const [errorCVV, setErrorCVV] = useState("");
+
+    // Obtengo el valor de la suscripcion
+    const plan = useSelector(
+        state => state.suscripcion.suscripcion
+      );
+
     // Validacion de FOrmulario
 
     const onChangeNombre = (e) => {
@@ -21,6 +30,7 @@ export default function Datos(props) {
 
     const onChangeNumberTDC = (e) => {
         setErrorTDC("");
+        setTDD();
         const value = e.target.value;
         
         // Valido Tarjetas de Credito o Debito Visa o MasterCard
@@ -34,6 +44,7 @@ export default function Datos(props) {
     }
     const onChangeFecha = (e) => {
         setErrorFecha("");
+        setFvenc();
         const value = e.target.value;
 
         // Valido Fecha de Caducidad
@@ -48,6 +59,7 @@ export default function Datos(props) {
 
       const onChangeCVV = (e) => {
         setErrorCVV("");
+        setCVV();
         const value = e.target.value;
 
         // Valido Codigo CVV
@@ -61,6 +73,7 @@ export default function Datos(props) {
         
       }
 
+      // Guardo y envio formulario
       const guardarCambios = (values) => {
           const valuesForm = {
               NOMBRE: nombre,
@@ -69,7 +82,11 @@ export default function Datos(props) {
               CVV: CVV
           };
 
-          console.log(valuesForm);
+          if( nombre && TDD && fVenc && CVV) {
+            console.log(valuesForm);
+            history.push("/confirmacion");
+          }
+
           
       }
 
@@ -162,7 +179,7 @@ export default function Datos(props) {
                 </Form.Item>
             </Col>
         </Row>
-        <Button type="dashed" block onClick={guardarCambios}>Pagar S/ 29.00</Button>
+        <Button type="dashed" block onClick={guardarCambios}>Pagar S/ {plan.costo}</Button>
       </Form>
     </Card>
     </>);
