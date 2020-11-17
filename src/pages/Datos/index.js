@@ -154,6 +154,7 @@ export default function Datos(props) {
         <Input 
             placeholder=".... .... .... ...." 
             suffix="CARD"
+            maxLength={16}
             onChange={onChangeNumberTDC} 
         />
         </Form.Item>
