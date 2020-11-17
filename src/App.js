@@ -4,25 +4,20 @@ import { BrowserRouter as Router, Switch, Route, Redirect } from "react-router-d
 
 import './App.css';
 
-// Redux
-import store from "./store";
-import { Provider } from "react-redux";
-
 // Paginas
 import Suscripcion from "./pages/Suscripcion";
 import Datos from "./pages/Datos";
 import Confirmacion from "./pages/Confirmacion";
 
 export default function  App() {
-  const { Header, Content } = Layout;
+  const { Header, Footer, Content } = Layout;
 
   return (
-    <Provider store={store}>
       <Layout>
         <Header className="App-header">Mag.</Header>
         <Router>
           <Content className="Content-info">
-                <Redirect from="/" to="/suscripcion" />
+                {/*<Redirect from="/" to="/suscripcion" />*/}
                 <Switch>
                   <Route path="/suscripcion" exact={true}>
                    <Suscripcion />
@@ -36,7 +31,7 @@ export default function  App() {
                 </Switch>
           </Content>
         </Router>
+        <Footer className="App-footer"></Footer>
       </Layout>
-    </Provider>
   );
 }

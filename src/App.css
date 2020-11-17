@@ -54,3 +54,20 @@
 .App-link {
   color: #61dafb;
 }
+
+.titulo_plan_conf {
+  font-size: x-large;
+  font-weight: bold;
+}
+
+.costo_plan_conf {
+  font-size: 16px;
+  font-weight: bold;
+}
+
+.info-result {
+  padding-top: 10px;
+  max-width: 250px;
+  text-align: justify;
+  color: rgba(0,0,0,.45);
+}
