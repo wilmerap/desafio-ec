@@ -103,3 +103,19 @@
   text-align: justify;
   color: rgba(0,0,0,.45);
 }
+
+.link_result {
+  font-weight: bold;
+  font-size: 13px;
+  color: black;
+  text-decoration: underline;
+  padding-top: 15px;
+}
+
+.link_result:hover {
+  font-weight: bold;
+  font-size: 13px;
+  color: black;
+  text-decoration: underline;
+  padding-top: 15px;
+}

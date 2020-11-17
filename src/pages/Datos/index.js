@@ -3,8 +3,11 @@ import { Row, Col, Card, Form, Input, Button, Drawer } from 'antd';
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
 
+import { TitlePage } from "../../TitlePage";
+
 // Redux
 import { selectSuscripcionAction } from "../../actions/suscripcionActions";
+import { datosPagoAction } from "../../actions/pagoActions";
 
 export default function Datos(props) {
 
@@ -22,6 +25,7 @@ export default function Datos(props) {
     // Inicializacion del dispach y ejecucion de las acciones.
     const dispatch = useDispatch();
     const Suscripcion = state => dispatch(selectSuscripcionAction(state));
+    const DatosPago = state => dispatch(datosPagoAction(state));
 
     // Obtengo el valor de la suscripcion
     const plan = useSelector(
@@ -91,7 +95,8 @@ export default function Datos(props) {
 
           if( nombre && TDD && fVenc && CVV) {
             console.log(valuesForm);
-            history.push("/confirmacion");
+            DatosPago(valuesForm);
+            //history.push("/confirmacion");
           }
 
           
@@ -107,6 +112,7 @@ export default function Datos(props) {
 
     return (
     <>
+    <TitlePage title="Datos de Pago" />
     <Card bordered={false} style={{ width: 300, top: 20}}>
       <Form
         

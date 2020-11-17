@@ -2,8 +2,9 @@ import React, { useState, Suspense } from "react";
 import { Result} from 'antd';
 import { useSelector } from "react-redux";
 
-export default function Confirmacion(props) {
+import { TitlePage } from "../../TitlePage";
 
+export default function Confirmacion() {
 
     // Obtengo el valor de la suscripcion
     const plan = useSelector(
@@ -11,6 +12,7 @@ export default function Confirmacion(props) {
       );
 
     return (<>
+        <TitlePage title="Bienvenido!!!" />
         <Result
             status="success"
             title="Bienvenido!!!"
@@ -21,6 +23,7 @@ export default function Confirmacion(props) {
 
         <div className="info-result">Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod sed ut perspiciatis unde omnis iste natus error sit voluptatem. Lorem ipsum dolor sit amet, consetetur.</div>
 
+        <a className="link_result">Ir a ver mi plan</a>
     </>);
     
 }

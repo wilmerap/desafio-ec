@@ -1,6 +1,8 @@
 import { combineReducers } from "redux";
 import suscripcionReducer from "./suscripcionReducer";
+import pagoReducer from "./pagoReducer";
 
 export default combineReducers({
-    suscripcion: suscripcionReducer
+    suscripcion: suscripcionReducer,
+    datospago: pagoReducer
 });

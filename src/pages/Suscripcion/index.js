@@ -4,6 +4,8 @@ import { Link } from "react-router-dom";
 
 import { useDispatch, useSelector } from "react-redux";
 
+import { TitlePage } from "../../TitlePage";
+
 // Redux
 import { selectSuscripcionAction } from "../../actions/suscripcionActions";
 
@@ -29,6 +31,7 @@ export default function Suscripcion() {
     );
 
     return (<>
+    <TitlePage title="Seleccionar Suscripción" />
     <div><b>Plan de Suscripción</b></div>
     <Switch className="switch_sus" checkedChildren="Estándar" unCheckedChildren="Premium" defaultChecked={(plan.costo == 29)?1:0} onChange={selectPlan} />
 
